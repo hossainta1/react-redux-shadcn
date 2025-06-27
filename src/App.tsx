@@ -1,12 +1,13 @@
-import { Button } from "./components/ui/button"
-
+import { Outlet } from "react-router"
+import Navbar from "./components/layout/Navbar.tsx"
 function App() {
  
 
   return (
-    <>
-      <Button>Test</Button>
-    </>
+   <>
+   <Navbar></Navbar>
+   <Outlet></Outlet>
+   </>
   )
 }
 
