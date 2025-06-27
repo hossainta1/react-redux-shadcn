@@ -17,6 +17,15 @@ const initialState: InitialState = {
       isComplited: false,
       priority: "High",
     },
+
+     {
+      id: "adgfejrnetrkk",
+      title: "Initialize git hub",
+      description: "Create Home page and Routing",
+      dueDate: "2025-11",
+      isComplited: false,
+      priority: "Medium",
+    }
   ],
 
   filter: "all",
