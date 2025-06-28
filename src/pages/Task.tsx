@@ -18,7 +18,7 @@ export default function Task() {
             </div>
             <div className="mt-10">
                 {
-                    tasks.map(task => <TaskCard task={task}></TaskCard>)
+                    tasks.map(task => <TaskCard task={task} key={task.id}></TaskCard>)
                 }
             </div>
 
