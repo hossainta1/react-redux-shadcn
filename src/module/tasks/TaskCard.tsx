@@ -25,7 +25,7 @@ export default function TaskCard({ task }: Iprops) {
             {/* Due Date & Priority */}
             <div className="flex justify-between items-center text-sm mb-4">
                 <div className="text-gray-500">
-                    📅 Due: <span className="text-gray-800 font-medium">{task.dueDate}</span>
+                    📅 Due: <span className="text-gray-800 font-medium">{task.dueDate.toString()}</span>
                 </div>
                 <div className={cn(" font-semibold", {
                     "text-red-600": task.priority === "High",

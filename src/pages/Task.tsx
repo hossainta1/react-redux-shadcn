@@ -6,9 +6,7 @@ import { useAppSelector } from "@/redux/hook";
 
 export default function Task() {
     const tasks = useAppSelector(selectTasks);
-
-
-    console.log(tasks)
+    
     return (
         <>
             <div>
@@ -17,8 +15,9 @@ export default function Task() {
                 <AddTaskModal></AddTaskModal>
             </div>
             <div className="mt-10">
-                {
-                    tasks.map(task => <TaskCard task={task} key={task.id}></TaskCard>)
+                <div>{tasks.length}</div> <br />
+                {    
+                    tasks?.map(task => <TaskCard task={task} key={task.id}></TaskCard>) 
                 }
             </div>
 
