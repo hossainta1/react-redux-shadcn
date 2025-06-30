@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import { deleteTask, toggleCompleteState } from "@/redux/features/task/taskSlice";
+import { useAppDispatch } from "@/redux/hook";
 import type { ITask } from "@/types";
 
 interface Iprops {
@@ -6,15 +8,33 @@ interface Iprops {
 }
 
 export default function TaskCard({ task }: Iprops) {
+
+    const dispatch = useAppDispatch()
+
     return (
 
         <div className="max-w-sm w-full rounded-xl border bg-white shadow p-5">
-            {/* Title & Completion Status */}
+            {/* Title, Toggle & Delete */}
             <div className="flex justify-between items-start mb-3">
                 <h2 className="text-lg font-semibold text-gray-800">{task.title}</h2>
-                <span className="text-xs px-2 py-1 rounded bg-yellow-100 text-yellow-800">
-                    {task.isComplited}
-                </span>
+                <div className="flex items-center gap-2">
+                    {/* Toggle (for future use) */}
+                    <input
+                        type="checkbox"
+                        className="accent-blue-600"
+                        onClick={() => dispatch(toggleCompleteState(task.id))}
+                        title="Select Task"
+                    />
+
+                    {/* Delete Button */}
+                    <button
+                        // You must define this function
+                        className="text-red-500 hover:text-red-700 text-sm"
+                        title="Delete Task"
+                    >
+                        🗑️
+                    </button>
+                </div>
             </div>
 
             {/* Description */}
@@ -39,7 +59,12 @@ export default function TaskCard({ task }: Iprops) {
             {/* Action Button */}
             <button className="text-sm bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 transition">
                 View Details
+            </button> 
+            <br />
+            <button onClick={() => dispatch(deleteTask(task.id))} className="text-sm bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 transition">
+                Delete
             </button>
         </div>
+
     );
 }
