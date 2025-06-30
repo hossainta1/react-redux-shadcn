@@ -16,10 +16,10 @@ export default function TaskCard({ task }: Iprops) {
         <div className="max-w-sm w-full rounded-xl border bg-white shadow p-5">
             {/* Title, Toggle & Delete */}
             <div className="flex justify-between items-start mb-3">
-                <h2 className="text-lg font-semibold text-gray-800">{task.title}</h2>
+                <h2 className={cn({"line-through" : task.isComplited})}>{task.title}</h2>
                 <div className="flex items-center gap-2">
                     {/* Toggle (for future use) */}
-                    <input
+                    <input 
                         type="checkbox"
                         className="accent-blue-600"
                         onClick={() => dispatch(toggleCompleteState(task.id))}
@@ -48,9 +48,9 @@ export default function TaskCard({ task }: Iprops) {
                     📅 Due: <span className="text-gray-800 font-medium">{task.dueDate.toString()}</span>
                 </div>
                 <div className={cn(" font-semibold", {
-                    "text-red-600": task.priority === "High",
-                    "text-green-600": task.priority === "Medium",
-                    "text-sky-600": task.priority === "Low"
+                    "text-red-600": task.priority === "high",
+                    "text-green-600": task.priority === "medium",
+                    "text-sky-600": task.priority === "low"
                 })}>
                     🔥 {task.priority}
                 </div>
@@ -59,7 +59,7 @@ export default function TaskCard({ task }: Iprops) {
             {/* Action Button */}
             <button className="text-sm bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 transition">
                 View Details
-            </button> 
+            </button>
             <br />
             <button onClick={() => dispatch(deleteTask(task.id))} className="text-sm bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 transition">
                 Delete
